@@ -61,6 +61,10 @@ var PageBuilderComponent = class extends HTMLElement {
       this.initialized = false;
     }
   }
+  // Exposing apis
+  getApi() {
+    return this.pageBuilder.getApi();
+  }
 };
 if (!customElements.get('page-builder')) {
   customElements.define('page-builder', PageBuilderComponent);

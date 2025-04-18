@@ -69,6 +69,11 @@ export class PageBuilderComponent extends HTMLElement {
       this.initialized = false;
     }
   }
+
+  // Exposing apis
+  public getApi() {
+    return this.pageBuilder.getApi();
+  }
 }
 
 // Define the custom element if it hasn't been registered already

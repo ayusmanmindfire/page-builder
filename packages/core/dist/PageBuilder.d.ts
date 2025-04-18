@@ -30,4 +30,7 @@ export declare class PageBuilder {
   createResponsivenessControls(iframe: HTMLIFrameElement): HTMLDivElement;
   setupPreviewModeButtons(): void;
   setupUndoRedoButtons(): void;
+  getApi(): {
+    setupUndoRedoButtons: () => void;
+  };
 }

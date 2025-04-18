@@ -10,10 +10,15 @@ interface CustomComponentConfig {
   svg?: string;
   title?: string;
 }
+interface PageBuilderApi {
+  getApi: () => any;
+}
 interface PageBuilderReactProps {
   config: DynamicComponents;
   customComponents?: Record<string, CustomComponentConfig>;
 }
-declare const PageBuilderReact: React.FC<PageBuilderReactProps>;
+declare const PageBuilderReact: React.ForwardRefExoticComponent<
+  PageBuilderReactProps & React.RefAttributes<PageBuilderApi>
+>;
 
-export { PageBuilderReact };
+export { PageBuilderApi, PageBuilderReact };

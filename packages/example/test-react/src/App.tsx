@@ -1,8 +1,24 @@
-import { PageBuilderReact } from '@mindfiredigital/page-builder-react';
+import { PageBuilderReact,PageBuilderApi } from '@mindfiredigital/page-builder-react';
 import ColorPicker from './components/ColorPicker';
 import CustomRating from './components/CustomRating';
+import { useEffect, useRef } from 'react';
 
 const App = () => {
+
+  const builderApiRef = useRef<PageBuilderApi>(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const api = builderApiRef.current?.getApi?.();
+      if (api) {
+        console.log("PageBuilder API ready", api);
+        api.setupUndoRedoButtons();
+        clearInterval(interval);
+      }
+    }, 100);
+  
+    return () => clearInterval(interval);
+  }, []);
   // Config object for dynamic components
   const dynamicComponents = {
     Basic: [
@@ -33,7 +49,7 @@ const App = () => {
   }
   return (
     <div>
-      <PageBuilderReact config={dynamicComponents} customComponents={customComponents}/>
+      <PageBuilderReact ref={builderApiRef} config={dynamicComponents} customComponents={customComponents}/>
     </div>
   );
 };

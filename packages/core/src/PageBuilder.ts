@@ -52,7 +52,7 @@ export class PageBuilder {
     this.setupExportHTMLButton();
     this.setupViewButton();
     this.setupPreviewModeButtons();
-    this.setupUndoRedoButtons();
+    // this.setupUndoRedoButtons();
     // });
   }
 
@@ -423,5 +423,12 @@ export class PageBuilder {
         Canvas.historyManager.redo();
       });
     }
+  }
+
+  // Exposing functions to end user
+  public getApi() {
+    return {
+      setupUndoRedoButtons: this.setupUndoRedoButtons.bind(this),
+    };
   }
 }

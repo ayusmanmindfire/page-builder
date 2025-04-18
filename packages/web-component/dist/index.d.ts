@@ -12,6 +12,9 @@ declare class PageBuilderComponent extends HTMLElement {
   ): void;
   connectedCallback(): void;
   private initializePageBuilder;
+  getApi(): {
+    setupUndoRedoButtons: () => void;
+  };
 }
 
 export { PageBuilderComponent };
