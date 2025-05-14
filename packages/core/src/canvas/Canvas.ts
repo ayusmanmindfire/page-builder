@@ -116,7 +116,7 @@ export class Canvas {
    * @returns The array of component objects.
    */
   static getState() {
-    return Canvas.components.map(component => {
+    const componentsState = Canvas.components.map(component => {
       const baseType = component.classList[0]
         .split(/\d/)[0]
         .replace('-component', '');
@@ -193,6 +193,13 @@ export class Canvas {
         imageSrc: imageSrc, // Store the image source if it's an image component
       };
     });
+    // Add root object with children
+    const rootNode = {
+      id: 'ROOT',
+      children: componentsState.map(component => component.id),
+    };
+
+    return [rootNode, ...componentsState];
   }
 
   static restoreState(state: any) {

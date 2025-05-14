@@ -1720,7 +1720,7 @@ class C {
       C.gridManager.initializeDropPreview(C.canvasElement);
   }
   static getState() {
-    return C.components.map(e => {
+    const e = C.components.map(e => {
       const t = e.classList[0].split(/\d/)[0].replace('-component', ''),
         n = e.querySelector('img') ? e.querySelector('img').src : null,
         s = window.getComputedStyle(e),
@@ -1780,6 +1780,7 @@ class C {
         }
       );
     });
+    return [{ id: 'ROOT', children: e.map(e => e.id) }, ...e];
   }
   static restoreState(e) {
     (C.canvasElement.innerHTML = ''),

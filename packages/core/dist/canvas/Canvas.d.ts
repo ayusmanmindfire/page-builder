@@ -20,28 +20,34 @@ export declare class Canvas {
    * Type, content, position, dimensions, style, and classes.
    * @returns The array of component objects.
    */
-  static getState(): {
-    id: string;
-    type: string;
-    content: string;
-    position: {
-      x: number;
-      y: number;
-    };
-    dimensions: {
-      width: number;
-      height: number;
-    };
-    style: {
-      [key: string]: string;
-    };
-    inlineStyle: string;
-    classes: string[];
-    dataAttributes: {
-      [key: string]: string;
-    };
-    imageSrc: string | null;
-  }[];
+  static getState(): (
+    | {
+        id: string;
+        type: string;
+        content: string;
+        position: {
+          x: number;
+          y: number;
+        };
+        dimensions: {
+          width: number;
+          height: number;
+        };
+        style: {
+          [key: string]: string;
+        };
+        inlineStyle: string;
+        classes: string[];
+        dataAttributes: {
+          [key: string]: string;
+        };
+        imageSrc: string | null;
+      }
+    | {
+        id: string;
+        children: string[];
+      }
+  )[];
   static restoreState(state: any): void;
   static onDrop(event: DragEvent): void;
   static reorderComponent(fromIndex: number, toIndex: number): void;
